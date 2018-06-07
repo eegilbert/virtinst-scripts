@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 WORKDIR=`dirname $0`
-CONFIG_FILE=$WORKDIR/config.sh
+CONFIG_FILE=$WORKDIR/config
 [ -f $CONFIG_FILE ] && source $CONFIG_FILE
 
 SUPPORTED="(lucid|precise|saucy|trusty|utopic|vivid|bionic|artful|xenial)"
