@@ -4,7 +4,7 @@ WORKDIR=`dirname $0`
 CONFIG_FILE=$WORKDIR/config
 [ -f $CONFIG_FILE ] && source $CONFIG_FILE
 
-SUPPORTED="(lucid|precise|saucy|trusty|utopic|vivid|bionic|artful|xenial)"
+SUPPORTED="(xenial|artful|bionic)"
 ARCH=amd64
 
 SITE=${UBUNTU_SITE:-http://ftp.riken.go.jp/Linux/ubuntu}
@@ -112,33 +112,14 @@ else
     VIRT_ARCH=i386
 fi
 case "$RELEASE_NAME" in
-  lucid)
-    RELEASE_FULLVER=10.04.4
-    ;;
-  precise)
-    RELEASE_FULLVER=12.04.3
-    ;;
-  saucy)
-    RELEASE_FULLVER=13.10
-    ;;
-  trusty)
-    RELEASE_FULLVER=14.04.01
-    ;;
-  utopic)
-    RELEASE_FULLVER=14.10
-    ;;
-  vivid)
-    RELEASE_FULLVER=15.04
-    OS_VARIANT=ubuntuutopic
-    ;;
-  bionic)
-    RELEASE_FULLVER=18.04
+  xenial)
+    RELEASE_FULLVER=16.04.04
     ;;
   artful)
     RELEASE_FULLVER=17.10
     ;;
-  xenial)
-    RELEASE_FULLVER=16.04.4
+  bionic)
+    RELEASE_FULLVER=18.04
     ;;
 esac
 if [ -z "$OS_VARIANT" ]; then
