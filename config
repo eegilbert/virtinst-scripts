@@ -14,4 +14,4 @@ UBUNTU_SITE=http://ubuntu.osuosl.org/releases/
 PASSWORD=ubuntu
 NTPSERVER=time1.google.com
 
-#
+DISKIMG_DIR=/var/lib/machines/

@@ -11,7 +11,7 @@ SITE=${UBUNTU_SITE:-http://ftp.riken.go.jp/Linux/ubuntu}
 PROXY=${UBUNTU_PROXY:-${PROXY:-$http_proxy}}
 DISKIMG_DIR=${DISKIMG_DIR:-$HOME/images}
 ISO_DIR=${UBUNTU_ISO_DIR:-$HOME/iso/ubuntu}
-NTPSERVER=${NTPSERVER:-ntp.nict.jp}
+NTPSERVER=${NTPSERVER:-time1.google.com}
 
 USERNAME=ubuntu
 # Unless password is specified NAME is used for password by default
