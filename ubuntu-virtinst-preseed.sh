@@ -7,10 +7,10 @@ CONFIG_FILE=$WORKDIR/config
 SUPPORTED="(xenial|artful|bionic)"
 ARCH=amd64
 
-SITE=${UBUNTU_SITE:-http://ftp.riken.go.jp/Linux/ubuntu}
+SITE=${UBUNTU_SITE:-http://ubuntu.osuosl.org/}
 PROXY=${UBUNTU_PROXY:-${PROXY:-$http_proxy}}
 DISKIMG_DIR=${DISKIMG_DIR:-$HOME/images}
-ISO_DIR=${UBUNTU_ISO_DIR:-$HOME/iso/ubuntu}
+ISO_DIR=${UBUNTU_ISO_DIR:-/var/lib/machines/ISO}
 NTPSERVER=${NTPSERVER:-time1.google.com}
 
 USERNAME=ubuntu
