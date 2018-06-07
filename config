@@ -15,3 +15,5 @@ PASSWORD=ubuntu
 NTPSERVER=time1.google.com
 
 DISKIMG_DIR=/var/lib/machines/linux
+
+OS_VARIANT=ubuntu17.10
