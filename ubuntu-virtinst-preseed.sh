@@ -4,7 +4,7 @@ WORKDIR=`dirname $0`
 CONFIG_FILE=$WORKDIR/config.sh
 [ -f $CONFIG_FILE ] && source $CONFIG_FILE
 
-SUPPORTED="(lucid|precise|saucy|trusty|utopic|vivid)"
+SUPPORTED="(lucid|precise|saucy|trusty|utopic|vivid|bionic|artful|xenial)"
 ARCH=amd64
 
 SITE=${UBUNTU_SITE:-http://ftp.riken.go.jp/Linux/ubuntu}
@@ -16,7 +16,7 @@ NTPSERVER=${NTPSERVER:-ntp.nict.jp}
 USERNAME=ubuntu
 # Unless password is specified NAME is used for password by default
 #PASSWORD=
-NUM_CPU=1
+NUM_CPU=2
 MEMORY=4096
 DISKSIZE=20G
 DISKFORMAT=qcow2
@@ -131,6 +131,15 @@ case "$RELEASE_NAME" in
     RELEASE_FULLVER=15.04
     OS_VARIANT=ubuntuutopic
     ;;
+  bionic)
+    RELEASE_FULLVER=18.04
+    ;;
+  artful)
+    RELEASE_FULLVER=17.10
+    ;;
+  xenial)
+    RELEASE_FULLVER=16.04.4
+    ;;
 esac
 if [ -z "$OS_VARIANT" ]; then
   OS_VARIANT=ubuntu${RELEASE_NAME}
@@ -159,24 +168,22 @@ function generate_preseed_cfg() {
     cat > $PRESEED_FILE <<EOF
 d-i debian-installer/language string en
 d-i debian-installer/locale string en_US.UTF-8
-d-i debian-installer/country string JP
+d-i debian-installer/country string US
 
 d-i console-setup/ask_detect boolean false
-d-i console-setup/layoutcode string jp
+d-i console-keymaps-at/keymap select us
+d-i keyboard-configuration/xkb-keymap select us
 
 d-i netcfg/choose_interface select auto
 d-i netcfg/get_hostname string $NAME
 d-i netcfg/get_domain string localdomain
-d-i netcfg/wireless_wep string
 
-d-i mirror/country string JP
-d-i mirror/http/hostname string jp.archive.ubuntu.com
+d-i mirror/country string US
 d-i mirror/http/directory string /ubuntu
 d-i mirror/http/proxy string $PROXY
-d-i mirror/http/mirror select jp.archive.ubuntu.com
 
 d-i clock-setup/utc boolean true
-d-i time/zone string Asia/Tokyo
+d-i time/zone string US/LosAngeles
 d-i clock-setup/ntp boolean true
 d-i clock-setup/ntp-server string $NTPSERVER
 

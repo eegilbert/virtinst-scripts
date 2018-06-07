@@ -6,12 +6,10 @@
 #CENTOS_PROXY=http://192.168.122.1:3128
 
 # Ubuntu specific
-#UBUNTU_SITE=http://ftp.riken.go.jp/Linux/ubuntu
-#UBUNTU_SITE=http://ftp.jaist.ac.jp/pub/Linux/ubuntu
-#UBUNTU_PROXY=http://192.168.122.1:8000
+UBUNTU_SITE=http://ubuntu.osuosl.org/releases/
 
 #UBUNTU_ISO_DIR=$HOME/iso/ubuntu
 #UBUNTU_ISO_LOCATION_FORMAT=%ISO_DIR%/ubuntu-%RELEASE_FULLVER%-server-%ARCH%.iso
 
-#PASSWORD=hogehoge
-#NTPSERVER=ntp.nict.jp
+PASSWORD=ubuntu
+NTPSERVER=time1.google.com
