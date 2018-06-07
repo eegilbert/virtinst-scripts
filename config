@@ -6,7 +6,7 @@
 #CENTOS_PROXY=http://192.168.122.1:3128
 
 # Ubuntu specific
-UBUNTU_SITE=http://mirror.enzu.com/ubuntu/dists/
+UBUNTU_SITE=http://mirror.pnl.gov/ubuntu/dists
 
 #UBUNTU_ISO_DIR=$HOME/iso/ubuntu
 #UBUNTU_ISO_LOCATION_FORMAT=%ISO_DIR%/ubuntu-%RELEASE_FULLVER%-server-%ARCH%.iso

@@ -7,7 +7,7 @@ CONFIG_FILE=$WORKDIR/config
 SUPPORTED="(xenial|artful|bionic)"
 ARCH=amd64
 
-SITE=${UBUNTU_SITE:-http://mirror.enzu.com/ubuntu/dists/}
+SITE=${UBUNTU_SITE:-http://mirror.pnl.gov/ubuntu/dists}
 PROXY=${UBUNTU_PROXY:-${PROXY:-$http_proxy}}
 DISKIMG_DIR=${DISKIMG_DIR:-/var/lib/machines/linux}
 ISO_DIR=${UBUNTU_ISO_DIR:-/var/lib/machines/ISO}
