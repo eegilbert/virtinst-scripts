@@ -9,7 +9,7 @@ ARCH=amd64
 
 SITE=${UBUNTU_SITE:-http://ubuntu.osuosl.org/}
 PROXY=${UBUNTU_PROXY:-${PROXY:-$http_proxy}}
-DISKIMG_DIR=${DISKIMG_DIR:-$HOME/images}
+DISKIMG_DIR=${DISKIMG_DIR:-/var/lib/machines/linux}
 ISO_DIR=${UBUNTU_ISO_DIR:-/var/lib/machines/ISO}
 NTPSERVER=${NTPSERVER:-time1.google.com}
 
@@ -43,6 +43,7 @@ Options:
   -u USERNAME   : Username of the default user (default: $USERNAME)
   -p PASSWORD   : Password for the default user (default: $PASSWORD)
   -P            : Do not use preseed.cfg
+  -v VNC_PORT   : VNC Port number to use
 
 Configurations:
   DISKIMG_DIR=$DISKIMG_DIR
@@ -54,7 +55,7 @@ EOF
     exit 1
 }
 
-while getopts "a:c:m:f:s:u:p:Ph" OPT; do
+while getopts "a:c:m:f:s:u:p:Ph:v" OPT; do
     case $OPT in
         a) ARCH=$OPTARG
            if [ "$ARCH" != "i386" -a "$ARCH" != "amd64" ]; then
@@ -74,6 +75,7 @@ while getopts "a:c:m:f:s:u:p:Ph" OPT; do
         u) USERNAME=$OPTARG; ;;
         p) PASSWORD=$OPTARG; ;;
         P) NO_PRESEED=true; ;;
+        v) VNC_PORT=$OPTARG; ;;
         ?) usage
            ;;
     esac
@@ -225,6 +227,8 @@ function virtinst_with_preseed() {
         --nographics \
         --location $LOCATION \
         --initrd-inject $PRESEED_FILE \
+        --vnc \
+        --vncport=$VNC_PORT \
         --extra-args "
     console=ttyS0,115200
     file=/$PRESEED_BASENAME
@@ -232,9 +236,9 @@ function virtinst_with_preseed() {
     priority=critical
     interface=auto
     language=en
-    country=JP
+    country=US
     locale=en_US.UTF-8
-    console-setup/layoutcode=jp
+    console-setup/layoutcode=us
     console-setup/ask_detect=false
     " \
         --network network=default,model=virtio
@@ -256,6 +260,8 @@ function virtinst_without_preseed() {
         --nographics \
         --location $LOCATION \
         --extra-args "console=ttyS0,115200" \
+        --vnc \
+        --vncport=$VNC_PORT \
         --network network=default,model=virtio
 }
 
