@@ -20,6 +20,7 @@ NUM_CPU=2
 MEMORY=4096
 DISKSIZE=20G
 DISKFORMAT=qcow2
+VNC_PORT=5900
 
 # You can use the following keyword
 # %ISO_DIR%
