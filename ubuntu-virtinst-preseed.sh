@@ -20,7 +20,6 @@ NUM_CPU=2
 MEMORY=4096
 DISKSIZE=20G
 DISKFORMAT=qcow2
-VNC_PORT=5900
 
 # You can use the following keyword
 # %ISO_DIR%
@@ -56,7 +55,7 @@ EOF
     exit 1
 }
 
-while getopts "a:c:m:f:s:u:p:Ph:v" OPT; do
+while getopts "a:c:m:f:s:u:p:Ph" OPT; do
     case $OPT in
         a) ARCH=$OPTARG
            if [ "$ARCH" != "i386" -a "$ARCH" != "amd64" ]; then
@@ -76,7 +75,6 @@ while getopts "a:c:m:f:s:u:p:Ph:v" OPT; do
         u) USERNAME=$OPTARG; ;;
         p) PASSWORD=$OPTARG; ;;
         P) NO_PRESEED=true; ;;
-        v) VNC_PORT=$OPTARG; ;;
         ?) usage
            ;;
     esac
@@ -228,8 +226,6 @@ function virtinst_with_preseed() {
         --nographics \
         --location $LOCATION \
         --initrd-inject $PRESEED_FILE \
-        --vnc \
-        --vncport=$VNC_PORT \
         --extra-args "
     console=ttyS0,115200
     file=/$PRESEED_BASENAME
@@ -261,8 +257,6 @@ function virtinst_without_preseed() {
         --nographics \
         --location $LOCATION \
         --extra-args "console=ttyS0,115200" \
-        --vnc \
-        --vncport=$VNC_PORT \
         --network network=default,model=virtio
 }
 
