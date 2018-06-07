@@ -157,14 +157,14 @@ d-i keyboard-configuration/xkb-keymap select us
 
 d-i netcfg/choose_interface select auto
 d-i netcfg/get_hostname string $NAME
-d-i netcfg/get_domain string localdomain
+d-i netcfg/get_domain string dnsgoodness.colo
 
 d-i mirror/country string US
 d-i mirror/http/directory string /ubuntu
 d-i mirror/http/proxy string $PROXY
 
 d-i clock-setup/utc boolean true
-d-i time/zone string US/LosAngeles
+d-i time/zone string US/Pacific
 d-i clock-setup/ntp boolean true
 d-i clock-setup/ntp-server string $NTPSERVER
 
