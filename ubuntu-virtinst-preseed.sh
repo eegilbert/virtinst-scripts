@@ -24,8 +24,8 @@ DISKFORMAT=qcow2
 # You can use the following keyword
 # %ISO_DIR%
 # %ARCH%
-# %RELEASE_NAME% : precise, quantal, ....
-# %RELEASE_VERSION% : 12.04, 12.10, ....
+# %RELEASE_NAME% : xenial, artful, bionic, ....
+# %RELEASE_VERSION% : 16.04.04, 17.10, 18.04, ....
 # %RELEASE_FULLVER% (including minor version for LTS) : 12.04.3, 10.04.4
 ISO_LOCATION_FORMAT_DEFAULT=%ISO_DIR%/ubuntu-%RELEASE_FULLVER%-server-%ARCH%.iso
 ISO_LOCATION_FORMAT=${UBUNTU_ISO_LOCATION_FORMAT:-$ISO_LOCATION_FORMAT_DEFAULT}
@@ -111,17 +111,16 @@ if [ "$ARCH" == "amd64" ]; then
 else
     VIRT_ARCH=i386
 fi
+
 case "$RELEASE_NAME" in
   xenial)
-    RELEASE_FULLVER=16.04.04
-    ;;
+    RELEASE_FULLVER=16.04.04 ;;
   artful)
-    RELEASE_FULLVER=17.10
-    ;;
+    RELEASE_FULLVER=17.10 ;;
   bionic)
-    RELEASE_FULLVER=18.04
-    ;;
+    RELEASE_FULLVER=18.04 ;;
 esac
+
 if [ -z "$OS_VARIANT" ]; then
   OS_VARIANT=ubuntu${RELEASE_NAME}
 fi
