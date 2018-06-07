@@ -125,7 +125,7 @@ if [ -z "$OS_VARIANT" ]; then
   OS_VARIANT=ubuntu${RELEASE_NAME}
 fi
 
-LOCATION=$SITE/dists/$RELEASE_NAME/main/installer-$ARCH/
+LOCATION=$SITE/$RELEASE_NAME/main/installer-$ARCH/
 if [ -n "$RELEASE_FULLVER" ]; then
     RELEASE_VERSION=`echo $RELEASE_FULLVER | cut -d . -f 1-2`
     ISO_LOCATION=`echo $ISO_LOCATION_FORMAT | sed \
